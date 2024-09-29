@@ -21,6 +21,14 @@ class SimpleMathTest {
     }
 
     @Test
+    void testSum_NegativeNumber_ThrowsException() {
+        SimpleMath math = new SimpleMath();
+        assertThrows(IllegalArgumentException.class, () -> {
+            math.sum(10.0, -5.0);
+        }, "Sum with negative number should throw IllegalArgumentException");
+    }
+
+    @Test
     void testSubtraction_TwoPositiveNumbers_ReturnsDifference() {
         SimpleMath math = new SimpleMath();
         final Double firstNumber = 10D;
@@ -95,5 +103,13 @@ class SimpleMathTest {
         assertEquals(expected, actual, "The square root of " + number + " must be " + actual);
         assertNotNull(actual);
         assertNotEquals(2D, actual);
+    }
+
+    @Test
+    void testSquareRoot_NegativeNumber_ThrowsException() {
+        SimpleMath math = new SimpleMath();
+        assertThrows(IllegalArgumentException.class, () -> {
+            math.squareRoot(-4.0);
+        }, "Square root of negative number should throw IllegalArgumentException");
     }
 }
