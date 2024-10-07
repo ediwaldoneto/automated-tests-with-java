@@ -1,5 +1,6 @@
 package br.com.nt.automated.tests.with.java.math;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,9 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Test Math Operations in SimpleMath Class")
 class SimpleMathTest {
 
+    private SimpleMath math;
+
+    @BeforeEach
+    void beforeEachMethod() {
+        math = new SimpleMath();
+    }
+
     @Test
     void testSum_TwoPositiveNumbers_ReturnsSum() {
-        SimpleMath math = new SimpleMath();
+
         final Double firstNumber = 8D;
         final Double secondNumber = 8D;
 
@@ -24,7 +32,7 @@ class SimpleMathTest {
 
     @Test
     void testSum_NegativeNumber_ThrowsException() {
-        SimpleMath math = new SimpleMath();
+
         assertThrows(IllegalArgumentException.class, () -> {
             math.sum(10.0, -5.0);
         }, "Sum with negative number should throw IllegalArgumentException");
@@ -32,7 +40,7 @@ class SimpleMathTest {
 
     @Test
     void testSubtraction_TwoPositiveNumbers_ReturnsDifference() {
-        SimpleMath math = new SimpleMath();
+
         final Double firstNumber = 10D;
         final Double secondNumber = 8D;
 
@@ -46,7 +54,7 @@ class SimpleMathTest {
 
     @Test
     void testMultiplication_TwoPositiveNumbers_ReturnsProduct() {
-        SimpleMath math = new SimpleMath();
+
         final Double firstNumber = 10D;
         final Double secondNumber = 10D;
 
@@ -60,7 +68,7 @@ class SimpleMathTest {
 
     @Test
     void testDivision_TwoPositiveNumbers_ReturnsQuotient() {
-        SimpleMath math = new SimpleMath();
+
         final Double firstNumber = 100D;
         final Double secondNumber = 10D;
 
@@ -74,19 +82,19 @@ class SimpleMathTest {
 
     @Test
     void testDivision_DivideByZero_ThrowsException() {
-        SimpleMath simpleMath = new SimpleMath();
+
         assertThrows(ArithmeticException.class, () -> {
-            simpleMath.division(8.0, 0.0);
+            math.division(8.0, 0.0);
         }, "Division by zero is not allowed.");
     }
 
     @Test
     void testMean_TwoPositiveNumbers_ReturnsMean() {
-        SimpleMath simpleMath = new SimpleMath();
+
         final Double firstNumber = 5D;
         final Double secondNumber = 9D;
 
-        final Double actual = simpleMath.mean(firstNumber, secondNumber);
+        final Double actual = math.mean(firstNumber, secondNumber);
         final Double expected = 7D;
 
         assertEquals(expected, actual, () -> "(" + firstNumber + " + " + secondNumber + ")" + " / 2 " + " did not produce " + expected);
@@ -96,10 +104,10 @@ class SimpleMathTest {
 
     @Test
     void testSquareRoot_PositiveNumber_ReturnsSquareRoot() {
-        SimpleMath simpleMath = new SimpleMath();
+
         final Double number = 16D;
 
-        Double actual = simpleMath.squareRoot(number);
+        Double actual = math.squareRoot(number);
         final Double expected = 4D;
 
         assertEquals(expected, actual, "The square root of " + number + " must be " + actual);
@@ -109,9 +117,10 @@ class SimpleMathTest {
 
     @Test
     void testSquareRoot_NegativeNumber_ThrowsException() {
-        SimpleMath math = new SimpleMath();
+
         assertThrows(IllegalArgumentException.class, () -> {
             math.squareRoot(-4.0);
         }, "Square root of negative number should throw IllegalArgumentException");
     }
+
 }
