@@ -1,9 +1,11 @@
 package br.com.nt.automated.tests.with.java.math;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Test Math Operations in SimpleMath Class")
 class SimpleMathTest {
 
     @Test
